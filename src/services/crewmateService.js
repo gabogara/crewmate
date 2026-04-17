@@ -10,6 +10,17 @@ const getAllCrewmates = async () => {
   return data;
 };
 
+const getCrewmateById = async (id) => {
+  const { data, error } = await supabase
+    .from("crewmates")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
 const createCrewmate = async (crewmate) => {
   const { data, error } = await supabase
     .from("crewmates")
@@ -21,4 +32,4 @@ const createCrewmate = async (crewmate) => {
   return data;
 };
 
-export { getAllCrewmates, createCrewmate };
+export { getAllCrewmates, createCrewmate, getCrewmateById };
