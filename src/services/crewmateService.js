@@ -10,4 +10,15 @@ const getAllCrewmates = async () => {
   return data;
 };
 
-export { getAllCrewmates };
+const createCrewmate = async (crewmate) => {
+  const { data, error } = await supabase
+    .from("crewmates")
+    .insert([crewmate])
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
+export { getAllCrewmates, createCrewmate };
