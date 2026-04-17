@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createCrewmate } from "../services/crewmateService";
 
 const CreateCrewmate = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -8,10 +10,29 @@ const CreateCrewmate = () => {
     color: "",
   });
 
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formData);
-    console.log("We no longer navigate away from this page");
+    setErrorMessage("");
+
+    if (!formData.name || !formData.speed || !formData.color) {
+      setErrorMessage("Please complete all fields.");
+      return;
+    }
+
+    try {
+      await createCrewmate({
+        ...formData,
+        speed: Number(formData.speed),
+      });
+
+      navigate("/gallery");
+    } catch (error) {
+      console.error("Error creating crewmate:", error);
+      setErrorMessage("Failed to create crewmate.");
+    }
   };
 
   const handleChange = (event) => {
