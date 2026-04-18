@@ -32,4 +32,28 @@ const createCrewmate = async (crewmate) => {
   return data;
 };
 
-export { getAllCrewmates, createCrewmate, getCrewmateById };
+const updateCrewmate = async (id, updatedCrewmate) => {
+  const { data, error } = await supabase
+    .from("crewmates")
+    .update(updatedCrewmate)
+    .eq("id", id)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
+const deleteCrewmate = async (id) => {
+  const { error } = await supabase.from("crewmates").delete().eq("id", id);
+
+  if (error) throw error;
+};
+
+export {
+  getAllCrewmates,
+  createCrewmate,
+  getCrewmateById,
+  updateCrewmate,
+  deleteCrewmate,
+};
