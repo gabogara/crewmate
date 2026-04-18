@@ -12,9 +12,9 @@ const CreateCrewmate = () => {
   });
 
   const navigate = useNavigate();
-    const location = useLocation();
+  const location = useLocation();
 
-    const from = location.state?.from || "/gallery";
+  const from = location.state?.from || "/gallery";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -44,9 +44,11 @@ const CreateCrewmate = () => {
   };
 
   return (
-    <section>
-      <h1>Create a New Crewmate</h1>
-      <p>This is where the create form will go.</p>
+    <section className="page-section">
+      <div className="page-header">
+        <h1>Create a New Crewmate</h1>
+        <p>Fill out the form below to add a new crewmate.</p>
+      </div>
       <CrewmateForm
         formData={formData}
         errorMessage={errorMessage}
@@ -54,7 +56,11 @@ const CreateCrewmate = () => {
         handleSubmit={handleSubmit}
         buttonText="Create Crewmate"
       />
-      <button type="button" onClick={() => navigate(from)}>
+      <button
+        className="secondary-button"
+        type="button"
+        onClick={() => navigate(from)}
+      >
         Cancel
       </button>
     </section>

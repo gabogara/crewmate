@@ -25,7 +25,7 @@ const Gallery = () => {
 
   if (isLoading) {
     return (
-      <section>
+      <section className="page-section">
         <h1>Your Crewmate Gallery</h1>
         <p>Loading crewmates...</p>
       </section>
@@ -34,7 +34,7 @@ const Gallery = () => {
 
   if (errorMessage) {
     return (
-      <section>
+      <section className="page-section">
         <h1>Your Crewmate Gallery</h1>
         <p>{errorMessage}</p>
       </section>
@@ -42,12 +42,15 @@ const Gallery = () => {
   }
 
   return (
-    <section>
-      <h1>Your Crewmate Gallery</h1>
+    <section className="page-section">
+      <div className="page-header">
+        <h1>Your Crewmate Gallery</h1>
+      </div>
+
       {crewmates.length === 0 ? (
         <p>No crewmates yet. Create one first.</p>
       ) : (
-        <div>
+        <div className="gallery-grid">
           {crewmates.map((crewmate) => (
             <CrewmateCard key={crewmate.id} crewmate={crewmate} />
           ))}

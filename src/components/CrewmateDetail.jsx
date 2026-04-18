@@ -30,7 +30,7 @@ const CrewmateDetail = () => {
 
   if (isLoading) {
     return (
-      <section>
+      <section className="page-section">
         <h1>Crewmate Detail</h1>
         <p>Loading crewmate...</p>
       </section>
@@ -39,7 +39,7 @@ const CrewmateDetail = () => {
 
   if (errorMessage) {
     return (
-      <section>
+      <section className="page-section">
         <h1>Crewmate Detail</h1>
         <p>{errorMessage}</p>
       </section>
@@ -48,7 +48,7 @@ const CrewmateDetail = () => {
 
   if (!crewmate) {
     return (
-      <section>
+      <section className="page-section">
         <h1>Crewmate Detail</h1>
         <p>Crewmate not found.</p>
       </section>
@@ -56,26 +56,35 @@ const CrewmateDetail = () => {
   }
 
   return (
-    <section>
-      <h1>{crewmate.name}</h1>
-      <p>Speed: {crewmate.speed} mph</p>
-      <p>Color: {crewmate.color}</p>
-      <p>Crewmate ID: {crewmate.id}</p>
-      <p>Created at: {new Date(crewmate.created_at).toLocaleString()}</p>
-      <p>
-        {crewmate.name} is a {crewmate.color} crewmate with a speed of{" "}
-        {crewmate.speed} mph.
-      </p>
+    <section className="page-section">
+      <div className="detail-card">
+        <h1>{crewmate.name}</h1>
+        <p>Speed: {crewmate.speed} mph</p>
+        <p>Color: {crewmate.color}</p>
+        <p>Crewmate ID: {crewmate.id}</p>
+        <p>Created at: {new Date(crewmate.created_at).toLocaleString()}</p>
+        <p>
+          {crewmate.name} is a {crewmate.color} crewmate with a speed of{" "}
+          {crewmate.speed} mph.
+        </p>
 
-      <Link
-        to={`/edit/${crewmate.id}`}
-        state={{ from: `/crewmate/${crewmate.id}` }}
-      >
-        Edit this Crewmate
-      </Link>
-      <button type="button" onClick={() => navigate(from)}>
-        Go Back
-      </button>
+        <div className="button-row">
+          <Link
+            className="primary-link-button"
+            to={`/edit/${crewmate.id}`}
+            state={{ from: `/crewmate/${crewmate.id}` }}
+          >
+            Edit this Crewmate
+          </Link>
+          <button
+            className="secondary-button"
+            type="button"
+            onClick={() => navigate(from)}
+          >
+            Go Back
+          </button>
+        </div>
+      </div>
     </section>
   );
 };

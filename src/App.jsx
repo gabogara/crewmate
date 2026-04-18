@@ -8,9 +8,9 @@ import EditCrewmate from "./components/EditCrewmate";
 
 const App = () => {
   return (
-    <div>
+    <div className="app-layout">
       <Sidebar />
-      <main>
+      <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreateCrewmate />} />

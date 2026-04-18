@@ -83,7 +83,7 @@ const EditCrewmate = () => {
 
   if (isLoading) {
     return (
-      <section>
+      <section className="page-section">
         <h1>Edit Crewmate</h1>
         <p>Loading crewmate...</p>
       </section>
@@ -92,7 +92,7 @@ const EditCrewmate = () => {
 
   if (errorMessage && !formData.name && !formData.speed && !formData.color) {
     return (
-      <section>
+      <section className="page-section">
         <h1>Edit Crewmate</h1>
         <p>{errorMessage}</p>
       </section>
@@ -100,9 +100,11 @@ const EditCrewmate = () => {
   }
 
   return (
-    <section>
-      <h1>Update Your Crewmate</h1>
-      <p>Edit the fields below and save your changes.</p>
+    <section className="page-section">
+      <div className="page-header">
+        <h1>Update Your Crewmate</h1>
+        <p>Edit the fields below and save your changes.</p>
+      </div>
       <CrewmateForm
         formData={formData}
         errorMessage={errorMessage}
@@ -111,7 +113,11 @@ const EditCrewmate = () => {
         buttonText="Update Crewmate"
         onDelete={handleDelete}
       />
-      <button type="button" onClick={() => navigate(from, { replace: true })}>
+      <button
+        className="secondary-button"
+        type="button"
+        onClick={() => navigate(from, { replace: true })}
+      >
         Cancel
       </button>
     </section>
