@@ -11,7 +11,11 @@ const Gallery = () => {
     const fetchCrewmates = async () => {
       try {
         const data = await getAllCrewmates();
-        setCrewmates(data);
+        const sorted = [...data].sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
+
+        setCrewmates(sorted);
       } catch (error) {
         console.error("Error fetching crewmates:", error);
         setErrorMessage("Failed to load crewmates.");
