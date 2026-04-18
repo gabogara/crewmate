@@ -90,6 +90,15 @@ const EditCrewmate = () => {
     );
   }
 
+  if (errorMessage && !formData.name && !formData.speed && !formData.color) {
+    return (
+      <section>
+        <h1>Edit Crewmate</h1>
+        <p>{errorMessage}</p>
+      </section>
+    );
+  }
+
   return (
     <section>
       <h1>Update Your Crewmate</h1>

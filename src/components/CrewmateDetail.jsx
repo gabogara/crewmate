@@ -67,7 +67,12 @@ const CrewmateDetail = () => {
         {crewmate.speed} mph.
       </p>
 
-      <Link to={`/edit/${crewmate.id}`}>Edit this Crewmate</Link>
+      <Link
+        to={`/edit/${crewmate.id}`}
+        state={{ from: `/crewmate/${crewmate.id}` }}
+      >
+        Edit this Crewmate
+      </Link>
       <button type="button" onClick={() => navigate(from)}>
         Go Back
       </button>
