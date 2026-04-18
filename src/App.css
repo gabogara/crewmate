@@ -182,3 +182,32 @@
     border-right-color: var(--border);
   }
 }
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-background {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 1.5;
+  z-index: 0;
+}
+
+.app-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.sidebar,
+.main-content {
+  position: relative;
+  z-index: 2;
+}
