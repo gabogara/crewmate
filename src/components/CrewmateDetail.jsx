@@ -60,8 +60,12 @@ const CrewmateDetail = () => {
       <h1>{crewmate.name}</h1>
       <p>Speed: {crewmate.speed} mph</p>
       <p>Color: {crewmate.color}</p>
-      <p>ID: {crewmate.id}</p>
+      <p>Crewmate ID: {crewmate.id}</p>
       <p>Created at: {new Date(crewmate.created_at).toLocaleString()}</p>
+      <p>
+        {crewmate.name} is a {crewmate.color} crewmate with a speed of{" "}
+        {crewmate.speed} mph.
+      </p>
 
       <Link to={`/edit/${crewmate.id}`}>Edit this Crewmate</Link>
       <button type="button" onClick={() => navigate(from)}>
